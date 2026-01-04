@@ -1,58 +1,39 @@
-package com.example.noteworthy.ui.theme
 
-import android.app.Activity
-import android.os.Build
-import androidx.compose.foundation.isSystemInDarkTheme
+package com.yourpackage.noteworthy.ui.theme
+
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+private val LightColors = lightColorScheme(
+    primary = androidx.compose.ui.graphics.Color(0xFF6200EE),
+    secondary = androidx.compose.ui.graphics.Color(0xFF03DAC6),
+    background = androidx.compose.ui.graphics.Color(0xFFFFFFFF),
+    surface = androidx.compose.ui.graphics.Color(0xFFFFFFFF),
+    onPrimary = androidx.compose.ui.graphics.Color.White,
+    onSecondary = androidx.compose.ui.graphics.Color.Black
 )
 
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+private val DarkColors = darkColorScheme(
+    primary = androidx.compose.ui.graphics.Color(0xFFBB86FC),
+    secondary = androidx.compose.ui.graphics.Color(0xFF03DAC6),
+    background = androidx.compose.ui.graphics.Color(0xFF121212),
+    surface = androidx.compose.ui.graphics.Color(0xFF121212),
+    onPrimary = androidx.compose.ui.graphics.Color.Black,
+    onSecondary = androidx.compose.ui.graphics.Color.Black
 )
 
 @Composable
 fun NoteWorthyTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    darkTheme: Boolean = false,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
+    val colors = if (darkTheme) DarkColors else LightColors
 
     MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
+        colorScheme = colors,
+        typography = androidx.compose.material3.Typography(),
         content = content
     )
 }
