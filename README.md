@@ -35,12 +35,15 @@ To get a local copy up and running, follow these simple steps.
 
 1.  Clone the repo
     ```sh
-    git clone https://github.com/your_username/NoteWorthy.git
+    git clone https://github.com/Eomeara89/NoteWorthy.git
     ```
 2.  Open the project in Android Studio.
 3.  Build the project and run it on an emulator or a physical device.
 
 ## Screenshots
+![img.png](img.png)
+![img_1.png](img_1.png)
+![img_2.png](img_2.png)
 
 *( coming soon )*
 
